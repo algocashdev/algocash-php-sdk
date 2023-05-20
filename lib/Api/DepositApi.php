@@ -41,7 +41,7 @@ class DepositApi
      */
     public function createDeposit($body)
     {
-        $response = $this->request('/payin', $body, 'POST');
+        $response = $this->request('/payin', json_decode($body, true), 'POST');
         return new DepositSuccess($response->contents());
     }  
 }

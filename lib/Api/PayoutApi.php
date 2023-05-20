@@ -41,7 +41,7 @@ class PayoutApi
      */
     public function createPayout($body)
     {
-        $response = $this->request('/payout', $body, 'POST');
+        $response = $this->request('/payout', json_decode($body, true), 'POST');
         return new PayoutSuccess($response->contents());
     }  
 }
