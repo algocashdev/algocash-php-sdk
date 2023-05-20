@@ -10,13 +10,13 @@ use Algocash\Model\Address;
  */
 class Payer
 {
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $body = [];
+    protected string $email;
+    protected string $phone;
+    protected Address|null $address;
+    protected string|null $fName;
+    protected string|null $lName;
+    protected string|null $id;
+    protected string|null $document;
 
     /**
      * Constructor
@@ -32,19 +32,27 @@ class Payer
      */
     public function __construct($email, $phone, $address=null, $fName=null, $lName=null, $id=null, $document=null)
     {
-        $this->body = [
-            'email' => $email,
-            'phone' => $phone,
-            'address' => $address,
-            'fName' => $fName,
-            'lName' => $lName,
-            'document' => $document,
-            'id' => $id
-        ];
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->address = $address;
+        $this->fName = $fName;
+        $this->lName = $lName;
+        $this->id = $id;
+        $this->document = $document;
     }
 
-    public function __serialize(): array
+    public function __toString()
     {
-        return $this->body;
+        return json_encode(
+            [
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'address' => json_decode($this->address, true),
+                'fName' => $this->fName,
+                'lName' => $this->lName,
+                'document' => $this->document,
+                'id' => $this->id
+            ]
+        );
     }
 }

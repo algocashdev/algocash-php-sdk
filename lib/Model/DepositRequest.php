@@ -6,18 +6,17 @@ use Algocash\Model\Payer;
 use Algocash\Model\Url;
 
 /**
- * DepsitRequest Class
+ * DepositRequest Class
  *
  */
 class DepositRequest
 {
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $body = [];
+    protected string $invoiceId;
+    protected string $amount;
+    protected Payer $payer;
+    protected string $paymentMethod;
+    protected Url $url;
 
     /**
      * Constructor
@@ -31,17 +30,23 @@ class DepositRequest
      */
     public function __construct($invoiceId, $amount, $payer, $paymentMethod, $url)
     {
-        $this->body = [
-            'invoice_id' => $invoiceId,
-            'amount' => $amount,
-            'payer' => $payer,
-            'payment_method' => $paymentMethod,
-            'url' => $url
-        ];
+        $this->invoiceId = $invoiceId;
+        $this->amount = $amount;
+        $this->payer = $payer;
+        $this->paymentMethod = $paymentMethod;
+        $this->url = $url;
     }
 
-    public function __serialize(): array
+    public function __toString()
     {
-        return $this->body;
+        return json_encode(
+            [
+                'invoice_id' => $this->invoiceId,
+                'amount' => $this->amount,
+                'payer' => json_decode($this->payer, true),
+                'payment_method' => $this->paymentMethod,
+                'url' => json_decode($this->url, true)
+            ]
+        );
     }
 }

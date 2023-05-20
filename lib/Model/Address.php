@@ -9,12 +9,10 @@ namespace Algocash\Model;
 class Address
 {
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $body = [];
+    protected string|null $street;
+    protected string|null $city;
+    protected string|null $state;
+    protected string|null $zipCode;
 
     /**
      * Constructor
@@ -27,16 +25,19 @@ class Address
      */
     public function __construct($street=null, $city=null, $state=null, $zipCode=null)
     {
-        $this->body = [
-            'street' => $street,
-            'city' => $city,
-            'state' => $state,
-            'zipCode' => $zipCode
-        ];
+        $this->street = $street;
+        $this->city = $city;
+        $this->state = $state;
+        $this->zipCode = $zipCode;
     }
 
-    public function __serialize(): array
+    public function __toString()
     {
-        return $this->body;
+        return json_encode([
+            'street' => $this->street,
+            'city' => $this->city,
+            'state' => $this->state,
+            'zipCode' => $this->zipCode
+        ]) ;
     }
 }

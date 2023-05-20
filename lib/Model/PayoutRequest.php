@@ -13,12 +13,12 @@ use Algocash\Model\Url;
 class PayoutRequest
 {
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $body = [];
+    protected string $invoiceId;
+    protected string $amount;
+    protected Payer $payer;
+    protected string $paymentMethod;
+    protected Bank $bank;
+    protected Url $url;
 
     /**
      * Constructor
@@ -33,18 +33,25 @@ class PayoutRequest
      */
     public function __construct($invoiceId, $amount, $payer, $paymentMethod, $bank, $url)
     {
-        $this->body = [
-            'invoice_id' => $invoiceId,
-            'amount' => $amount,
-            'payer' => $payer,
-            'payment_method' => $paymentMethod,
-            'bank_account' => $bank,
-            'url' => $url
-        ];
+        $this->invoiceId = $invoiceId;
+        $this->amount = $amount;
+        $this->payer = $payer;
+        $this->paymentMethod = $paymentMethod;
+        $this->bank = $bank;
+        $this->url = $url;
     }
 
-    public function __serialize(): array
+    public function __toString()
     {
-        return $this->body;
+        return json_encode(
+            [
+                'invoice_id' => $this->invoiceId,
+                'amount' => $this->amount,
+                'payer' => json_decode($this->payer, true),
+                'payment_method' => $this->paymentMethod,
+                'bank_account' => json_decode($this->bank, true),
+                'url' => json_decode($this->url, true)
+            ]
+        );
     }
 }

@@ -9,12 +9,11 @@ namespace Algocash\Model;
 class Url
 {
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $body = [];
+    protected string $callbackUrl;
+    protected string|null $pendingUrl;
+    protected string|null $successUrl;
+    protected string|null $errorUrl;
+    protected string|null $backUrl;
 
     /**
      * Constructor
@@ -28,17 +27,23 @@ class Url
      */
     public function __construct($callbackUrl, $pendingUrl=null, $successUrl=null, $errorUrl=null, $backUrl=null)
     {
-        $this->body = [
-            'callback_url' => $callbackUrl,
-            'pending_url' => $pendingUrl,
-            'success_url' => $successUrl,
-            'error_url' => $errorUrl,
-            'back_url' => $backUrl
-        ];
+        $this->callbackUrl = $callbackUrl;
+        $this->pendingUrl = $pendingUrl;
+        $this->successUrl = $successUrl;
+        $this->errorUrl = $errorUrl;
+        $this->backUrl = $backUrl;
     }
 
-    public function __serialize(): array
+    public function __toString()
     {
-        return $this->body;
+        return json_encode(
+            [
+                'callback_url' => $this->callbackUrl,
+                'pending_url' => $this->pendingUrl,
+                'success_url' => $this->successUrl,
+                'error_url' => $this->errorUrl,
+                'back_url' => $this->backUrl
+            ]
+        );
     }
 }
