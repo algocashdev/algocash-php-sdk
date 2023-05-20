@@ -9,7 +9,7 @@ use Algocash\Model\Url;
  * DepsitRequest Class
  *
  */
-class DepsitRequest
+class DepositRequest
 {
 
     /**
