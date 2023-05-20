@@ -12,8 +12,6 @@ PHP 5.5 and later
 
 composer install algocash
 
-Then run `composer install`
-
 ### Manual Installation
 
 Download the files and include `autoload.php`:
@@ -38,35 +36,30 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-// Configure HTTP basic authorization: basicAuth
-$config = Algocash\Configuration::getDefaultConfiguration()
-    ->setUsername('YOUR_USERNAME')
-    ->setPassword('YOUR_PASSWORD');
-// Configure API key authorization: signatureAuth
-$config = Algocash\Configuration::getDefaultConfiguration()->setApiKey('API_ACCESS_TOKEN', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Algocash\Configuration::getDefaultConfiguration()->setApiKeyPrefix('API_ACCESS_TOKEN', 'Bearer');
+    $algo = Algocash::getInstance()
+        ->setApiKey('merchant_key', 'merchant_secret')
+        ->setAccessToken('api_access_token');
+        // ->enableProdMode(false);
 
-$apiInstance = new Algocash\Algocash\DepositApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \Algocash\Model\DepositRequest(); // \Algocash\Model\DepositRequest | Deposit request body
+    $apiInstance = new DepositApi($algo);
+    $payer = new Payer("email", "phone");
+    $url = new Url("callback_url", "pending_url", "success_url", "error_url");
+    $body = new DepositRequest("invioceId", "amount", $payer, "payment method", $url);
 
-try {
-    $result = $apiInstance->createDeposit($body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DepositApi->createDeposit: ', $e->getMessage(), PHP_EOL;
-}
+    try {
+        $result = $apiInstance->createDeposit($body);
+        print_r($result);
+    } catch (\Algocash\ApiException $e) {
+        echo 'Api Exception when calling DepositApi->createDeposit: ', json_encode($e->getError()), PHP_EOL;
+    } catch (\Exception $e) {
+        echo 'Exception when calling DepositApi->createDeposit: ', $e->getMessage(), PHP_EOL;
+    }
 ?>
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://virtserver.swaggerhub.com/gitdevstar/Algocash/1.0.0*
+All URIs are relative to *https://app.swaggerhub.com/apis-docs/gitdevstar/Algocash/1.0.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -86,21 +79,8 @@ Class | Method | HTTP request | Description
  - [PayoutSuccess](docs/Model/PayoutSuccess.md)
  - [Url](docs/Model/Url.md)
 
-## Documentation For Authorization
-
-
-## basicAuth
-
-- **Type**: HTTP basic authentication
-
-## signatureAuth
-
-- **Type**: API key
-- **API key parameter name**: API_ACCESS_TOKEN
-- **Location**: HTTP header
-
-
 ## Author
 
 loganph.work@gmail.com
 
+https://github.com/gitdevstar
