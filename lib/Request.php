@@ -71,23 +71,23 @@ class Request
             
             $request = $this->client->request($type, $uri, $options);
 
-            $res = new Response($request, $seconds);
-
-            if ($request->getStatusCode() === 500) {
-                throw new ApiException($res->contents());
-            }  
         }
          catch (ClientException  $e) {
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
             $erroObj = json_decode($responseBodyAsString);
-            throw new Exception($erroObj->message);
+            throw new Exception($responseBodyAsString);
         } catch (RequestException $e) {
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
-            $erroObj = json_decode($responseBodyAsString);
-            throw new Exception($erroObj->message);
+            throw new ApiException($responseBodyAsString);
         }
+
+        $res = new Response($request, $seconds);
+
+        if ($request->getStatusCode() === 500) {
+            throw new ApiException($res->contents());
+        }  
 
         return $res;
 

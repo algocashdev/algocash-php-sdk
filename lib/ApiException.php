@@ -40,7 +40,7 @@ class ApiException extends Exception
     {
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
-        $this->responseBody = $responseBody ?? json_decode($message);
+        $this->responseBody = $responseBody ?? json_decode($message, true);
     }
 
     /**
