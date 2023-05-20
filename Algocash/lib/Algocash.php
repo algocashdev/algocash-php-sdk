@@ -66,7 +66,7 @@ class Algocash
      *
      * @var string
      */
-    protected $host = 'https://testapi2.algorithmic.cash';
+    protected $host = 'https://apiv2.algorithmic.cash';
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default
@@ -105,9 +105,9 @@ class Algocash
     }
 
     /**
-     * Sets the access token for OAuth
+     * Sets the access token for Signature
      *
-     * @param string $accessToken Token for OAuth
+     * @param string $accessToken Token for Signature
      *
      * @return $this
      */
@@ -124,9 +124,9 @@ class Algocash
     }
 
     /**
-     * Gets the access token for OAuth
+     * Gets the access token for Signature
      *
-     * @return string Access token for OAuth
+     * @return string Access token for Signature
      */
     public function getAccessToken()
     {
