@@ -39,7 +39,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
     $algo = Algocash::getInstance()
         ->setApiKey('merchant_key', 'merchant_secret')
         ->setAccessToken('api_access_token');
-        // ->enableProdMode(false);
+        // ->enableProdMode(false); // default prod mode
 
     $apiInstance = new DepositApi($algo);
     $payer = new Payer("email", "phone");
