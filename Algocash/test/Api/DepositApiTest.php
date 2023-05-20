@@ -50,9 +50,9 @@ class DepositApiTest extends TestCase
     public function testCreateDeposit()
     {
         $algo = Algocash::getInstance()
-            ->setApiKey('', '')
-            ->setAccessToken('YOUR_PASSWORD');
-            // ->enableProdMode(false);
+            ->setApiKey('sWBYGvzA61ITU4Vh', 'OfeR3xi59rLAM9c1')
+            ->setAccessToken('4q4epHrbUHykQwnc')
+            ->enableProdMode(false);
         // $algo->setHost('');
 
         $apiInstance = new DepositApi($algo);
