@@ -28,7 +28,7 @@ class Request
      * Start the class()
      *
      */
-    public function __construct(Algocash $algocash, $timeout = 4)
+    public function __construct(Algocash $algocash, $timeout = 10)
     {
         $this->algocash = $algocash;
 
