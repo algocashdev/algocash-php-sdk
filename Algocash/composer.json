@@ -1,0 +1,38 @@
+{
+    "name": "devstar/algocash",
+    "description": "",
+    "keywords": [
+        "algovash",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://github.com/Jax-Vinod/algocash-php-sdk",
+	"type": "package",
+	"authors": [
+        {
+            "name": "Devstar",
+            "email": "loganph.work@gmail.com"
+        }
+    ],
+    "license": "proprietary",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": { "Algocash\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Algocash\\" : "test/" }
+    }
+}
