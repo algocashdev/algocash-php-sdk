@@ -48,7 +48,7 @@ class Request
     public function send($path, $params = [], $type = 'GET')
     {
         // build and prepare our full path rul
-        $url = $this->prepareUrl($path, $params);
+        $uri = $this->prepareUrl($path, $params);
 
         // lets track how long it takes for this request
         $seconds = 0;
@@ -69,7 +69,7 @@ class Request
             if($type == 'GET') $options['query'] = $params;
             else $options['json'] = $params;
             
-            $request = $this->client->request($type, $url, $options);
+            $request = $this->client->request($type, $uri, $options);
 
             $res = new Response($request, $seconds);
 
@@ -94,74 +94,21 @@ class Request
     }
 
     /**
-     * stream()
-     *
-     * Send request
-     *
-     * @return array
-     */
-    public function stream($handle, $params = [])
-    {
-        // build and prepare our full path rul
-        $url = $this->prepareUrl($handle, $params);
-
-        // lets track how long it takes for this request
-        $seconds = 0;
-
-        $auth = base64_encode($this->alpaca->getAuthKeys()[0].':'.$this->alpaca->getAuthKeys()[1]);
-
-        try {
-            // push request
-            $options = [
-                'http' => [
-                    'method'=>"GET",
-                    'jquery' => $params,
-                    'header' => [
-                        'Authorization' => 'Basic '.$auth,
-                    ],
-                ]
-            ];
-            
-            $context = stream_context_create($options);
-
-            /* Sends an http request to www.example.com
-            with additional headers shown above */
-            $fp = fopen($this->alpaca->getRoot().$url, 'r', false, $context);
-        }
-         catch (ClientException  $e) {
-            $response = $e->getResponse();
-            $responseBodyAsString = $response->getBody()->getContents();
-            $erroObj = json_decode($responseBodyAsString);
-            throw new Exception($erroObj->message);
-        } catch (RequestException $e) {
-            $response = $e->getResponse();
-            $responseBodyAsString = $response->getBody()->getContents();
-            $erroObj = json_decode($responseBodyAsString);
-            throw new Exception($erroObj->message);
-        }
-
-        // send and return the request response
-        return $fp;
-    }
-
-    /**
      * prepareUrl()
      *
      * Get and prepare the url
      *
      * @return string
      */
-    private function prepareUrl($handle, $segments = [])
+    private function prepareUrl($path, $segments = [])
     {
-        $url = $this->alpaca->getPath($handle);
-
         foreach($segments as $segment=>$value) {
             if (gettype($value) == 'string') {
-                $url = str_replace('{'.$segment.'}', $value, $url);
-                $url = str_replace(':'.$segment, $value, $url);
+                $path = str_replace('{'.$segment.'}', $value, $path);
+                $path = str_replace(':'.$segment, $value, $path);
             }
         }
 
-        return $url;
+        return $path;
     }
 }
