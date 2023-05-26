@@ -1,14 +1,14 @@
 {
-    "name": "devstar/algocash",
+    "name": "algocashdev/algocashphpsdk",
     "description": "",
     "keywords": [
-        "algovash",
+        "algocash",
         "php",
         "sdk",
         "rest",
         "api"
     ],
-    "homepage": "https://github.com/Jax-Vinod/algocash-php-sdk",
+    "homepage": "https://github.com/algocashdev/algocash-php-sdk",
 	"type": "package",
 	"authors": [
         {
