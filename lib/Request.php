@@ -54,7 +54,7 @@ class Request
         $seconds = 0;
 
         $auth = base64_encode($this->algocash->getApiKey().':'.$this->algocash->getSecret());
-        $signature = hash('sha256', json_encode($params).$this->algocash->getAccessToken());
+        $signature = hash_hmac('sha256', json_encode($params, JSON_UNESCAPED_SLASHES), $this->algocash->getAccessToken());
 
         try {
             // push request
