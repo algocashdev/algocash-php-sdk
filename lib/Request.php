@@ -85,7 +85,7 @@ class Request
 
         $res = new Response($request, $seconds);
 
-        if ($request->getStatusCode() === 500) {
+        if ($request->getStatusCode() >= 300 || $request->getStatusCode() < 200) {
             throw new ApiException($res->contents());
         }  
 
