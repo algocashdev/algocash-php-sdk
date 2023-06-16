@@ -48,8 +48,8 @@ class Payer
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'address' => json_decode($this->address, true),
-                'fName' => $this->fName,
-                'lName' => $this->lName,
+                'first_name' => $this->fName,
+                'last_name' => $this->lName,
                 'document' => $this->document,
                 'id' => $this->id
             ]
