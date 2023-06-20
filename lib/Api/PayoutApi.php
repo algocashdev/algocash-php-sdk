@@ -4,6 +4,7 @@ namespace Algocash\Api;
 use Algocash\Algocash;
 use Algocash\Model\PayoutRequest;
 use Algocash\Model\PayoutResponse;
+use Algocash\Model\PayoutStatusResponse;
 use Algocash\Response;
 
 class PayoutApi
@@ -43,5 +44,21 @@ class PayoutApi
     {
         $response = $this->request('/payout', json_decode($body, true), 'POST');
         return new PayoutResponse($response->contents());
-    }  
+    }
+
+    /**
+     * Operation requestPayoutStatus
+     *
+     * request Payout Status
+     * @param string $invoiceId
+     *
+     * @throws \Algocash\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Algocash\Model\PayoutStatusResponse
+     */
+    public function requestPayoutStatus($invoiceId)
+    {
+        $response = $this->request('/payout/status/'.$invoiceId);
+        return new PayoutStatusResponse($response->contents());
+    }
 }
