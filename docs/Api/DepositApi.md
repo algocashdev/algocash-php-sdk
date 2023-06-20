@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createDeposit**](DepositApi.md#createdeposit) | **POST** /payin | create a deposit
 
 # **createDeposit**
-> \Algocash\Model\DepositSuccess createDeposit($body)
+> \Algocash\Model\DepositResponse createDeposit($body)
 
 create a deposit
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Algocash\Model\DepositSuccess**](../Model/DepositSuccess.md)
+[**\Algocash\Model\DepositResponse**](../Model/DepositResponse.md)
 
 ### Authorization
 

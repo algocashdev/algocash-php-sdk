@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createPayout**](PayoutApi.md#createpayout) | **POST** /payout | create payout
 
 # **createPayout**
-> \Algocash\Model\PayoutSuccess createPayout($body)
+> \Algocash\Model\PayoutResponse createPayout($body)
 
 create payout
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Algocash\Model\PayoutSuccess**](../Model/PayoutSuccess.md)
+[**\Algocash\Model\PayoutResponse**](../Model/PayoutResponse.md)
 
 ### Authorization
 

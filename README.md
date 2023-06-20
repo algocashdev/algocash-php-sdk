@@ -72,11 +72,11 @@ Class | Method | HTTP request | Description
  - [Bank](docs/Model/Bank.md)
  - [CallbackPayload](docs/Model/CallbackPayload.md)
  - [DepositRequest](docs/Model/DepositRequest.md)
- - [DepositSuccess](docs/Model/DepositSuccess.md)
+ - [DepositResponse](docs/Model/DepositResponse.md)
  - [Error](docs/Model/Error.md)
  - [Payer](docs/Model/Payer.md)
  - [PayoutRequest](docs/Model/PayoutRequest.md)
- - [PayoutSuccess](docs/Model/PayoutSuccess.md)
+ - [PayoutResponse](docs/Model/PayoutResponse.md)
  - [Url](docs/Model/Url.md)
 
 ## Author

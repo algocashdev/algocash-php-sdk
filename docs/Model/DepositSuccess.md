@@ -1,4 +1,4 @@
-# DepositSuccess
+# DepositResponse
 
 ## Properties
 Name | Type | Description | Notes

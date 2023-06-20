@@ -1,4 +1,4 @@
-# PayoutSuccess
+# PayoutResponse
 
 ## Properties
 Name | Type | Description | Notes
