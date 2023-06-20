@@ -25,7 +25,7 @@ $algo = Algocash::getInstance()
 $apiInstance = new DepositApi($algo);
 $payer = new Payer("email", "phone");
 $url = new Url("callback_url", "pending_url", "success_url", "error_url");
-$body = new DepositRequest("invioceId", "amount", $payer, "payment method", $url);
+$body = new DepositRequest("invioceId", "amount", $payer, $url, "payment method");
 
 try {
     $result = $apiInstance->createDeposit($body);

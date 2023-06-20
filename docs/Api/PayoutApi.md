@@ -25,7 +25,7 @@ $apiInstance = new PayoutApi($algo);
 $payer = new Payer("email", "phone");
 $url = new Url("callback_url");
 $bank = new Bank("account_number", "beneficiary_name", "bank_account_type","bank_code");
-$body = new PayoutRequest("invoiceId", "amount", $payer, "payment_method", $bank, $url);
+$body = new PayoutRequest("invoiceId", "amount", $payer, $bank, $url, "payment_method");
 
 try {
     $result = $apiInstance->createPayout($body);
