@@ -1,6 +1,6 @@
 <?php
 /**
- * DepositSuccessTest
+ * DepositResponseTest
  *
  * PHP version 5
  *
@@ -31,15 +31,15 @@ namespace Algocash;
 use PHPUnit\Framework\TestCase;
 
 /**
- * DepositSuccessTest Class Doc Comment
+ * DepositResponseTest Class Doc Comment
  *
  * @category    Class
- * @description DepositSuccess
+ * @description DepositResponse
  * @package     Algocash
  * @author      devstar
  * @link        https://github.com/Jax-Vinod/algocash-php-sdk
  */
-class DepositSuccessTest extends TestCase
+class DepositResponseTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class DepositSuccessTest extends TestCase
     }
 
     /**
-     * Test "DepositSuccess"
+     * Test "DepositResponse"
      */
-    public function testDepositSuccess()
+    public function testDepositResponse()
     {
     }
 

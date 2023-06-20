@@ -3,10 +3,10 @@
 namespace Algocash\Model;
 
 /**
- * DepositSuccess Class
+ * DepositResponse Class
  *
  */
-class DepositSuccess
+class DepositResponse
 {
     /**
      * @var string

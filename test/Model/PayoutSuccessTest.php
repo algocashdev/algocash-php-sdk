@@ -1,6 +1,6 @@
 <?php
 /**
- * PayoutSuccessTest
+ * PayoutResponseTest
  *
  * PHP version 5
  *
@@ -31,15 +31,15 @@ namespace Algocash;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PayoutSuccessTest Class Doc Comment
+ * PayoutResponseTest Class Doc Comment
  *
  * @category    Class
- * @description PayoutSuccess
+ * @description PayoutResponse
  * @package     Algocash
  * @author      devstar
  * @link        https://github.com/Jax-Vinod/algocash-php-sdk
  */
-class PayoutSuccessTest extends TestCase
+class PayoutResponseTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class PayoutSuccessTest extends TestCase
     }
 
     /**
-     * Test "PayoutSuccess"
+     * Test "PayoutResponse"
      */
-    public function testPayoutSuccess()
+    public function testPayoutResponse()
     {
     }
 

@@ -3,10 +3,10 @@
 namespace Algocash\Model;
 
 /**
- * PayoutSuccess Class
+ * PayoutResponse Class
  *
  */
-class PayoutSuccess
+class PayoutResponse
 {
     /**
      * @var string

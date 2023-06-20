@@ -3,7 +3,7 @@ namespace Algocash\Api;
 
 use Algocash\Algocash;
 use Algocash\Model\PayoutRequest;
-use Algocash\Model\PayoutSuccess;
+use Algocash\Model\PayoutResponse;
 use Algocash\Response;
 
 class PayoutApi
@@ -37,11 +37,11 @@ class PayoutApi
      *
      * @throws \Algocash\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Algocash\Model\PayoutSuccess
+     * @return \Algocash\Model\PayoutResponse
      */
     public function createPayout($body)
     {
         $response = $this->request('/payout', json_decode($body, true), 'POST');
-        return new PayoutSuccess($response->contents());
+        return new PayoutResponse($response->contents());
     }  
 }

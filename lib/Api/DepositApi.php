@@ -3,7 +3,7 @@ namespace Algocash\Api;
 
 use Algocash\Algocash;
 use Algocash\Model\DepositRequest;
-use Algocash\Model\DepositSuccess;
+use Algocash\Model\DepositResponse;
 use Algocash\Response;
 
 class DepositApi
@@ -37,11 +37,11 @@ class DepositApi
      *
      * @throws \Algocash\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Algocash\Model\DepositSuccess
+     * @return \Algocash\Model\DepositResponse
      */
     public function createDeposit($body)
     {
         $response = $this->request('/payin', json_decode($body, true), 'POST');
-        return new DepositSuccess($response->contents());
+        return new DepositResponse($response->contents());
     }  
 }
