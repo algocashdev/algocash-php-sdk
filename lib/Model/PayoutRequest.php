@@ -26,12 +26,12 @@ class PayoutRequest
      * @param  string $invoiceId
      * @param  string $amount
      * @param  Payer $payer
-     * @param  string $paymentMethod
      * @param  Bank $bank
      * @param  Url $url
+     * @param  string|null $paymentMethod
      *
      */
-    public function __construct($invoiceId, $amount, $payer, $paymentMethod, $bank, $url)
+    public function __construct($invoiceId, $amount, $payer, $bank, $url, $paymentMethod=null)
     {
         $this->invoiceId = $invoiceId;
         $this->amount = $amount;
