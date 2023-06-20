@@ -70,4 +70,30 @@ class DepositApiTest extends TestCase
             echo 'Exception when calling DepositApi->createDeposit: ', $e->getMessage(), PHP_EOL;
         }
     }
+
+    /**
+     * Test case for requestDepositStatus
+     *
+     * request deposit status.
+     *
+     */
+    public function testRequestDepositStatus()
+    {
+        $algo = Algocash::getInstance()
+            ->setApiKey('sWBYGvzA61ITU4Vh', 'OfeR3xi59rLAM9c1')
+            ->setAccessToken('4q4epHrbUHykQwnc')
+            ->enableProdMode(false);
+        // $algo->setHost('https://testapi2.algorithmic.cash');
+
+        $apiInstance = new DepositApi($algo);
+
+        try {
+            $result = $apiInstance->requestDepositStatus("134670002");
+            print_r($result);
+        } catch (\Algocash\ApiException $e) {
+            echo 'Api Exception when calling DepositApi->requestDepositStatus: ', json_encode($e->getError()), PHP_EOL;
+        } catch (\Exception $e) {
+            echo 'Exception when calling DepositApi->requestDepositStatus: ', $e->getMessage(), PHP_EOL;
+        }
+    }
 }

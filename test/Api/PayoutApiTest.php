@@ -71,4 +71,24 @@ class PayoutApiTest extends TestCase
             echo 'Exception when calling PayoutApi->createPayout: ', $e->getMessage(), PHP_EOL;
         }
     }
+
+    public function testRequestPayoutStatus()
+    {
+        $algo = Algocash::getInstance()
+            ->setApiKey('sWBYGvzA61ITU4Vh', 'OfeR3xi59rLAM9c1')
+            ->setAccessToken('4q4epHrbUHykQwnc')
+            ->enableProdMode(false);
+        // $algo->setHost('https://testapi2.algorithmic.cash');
+
+        $apiInstance = new PayoutApi($algo);
+
+        try {
+            $result = $apiInstance->requestPayoutStatus("100001");
+            print_r($result);
+        } catch (\Algocash\ApiException $e) {
+            echo 'Api Exception when calling PayoutApi->requestPayoutStatus: ', json_encode($e->getError()), PHP_EOL;
+        } catch (\Exception $e) {
+            echo 'Exception when calling PayoutApi->requestPayoutStatus: ', $e->getMessage(), PHP_EOL;
+        }
+    }
 }
