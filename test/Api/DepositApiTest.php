@@ -53,13 +53,13 @@ class DepositApiTest extends TestCase
             ->setApiKey('sWBYGvzA61ITU4Vh', 'OfeR3xi59rLAM9c1')
             ->setAccessToken('4q4epHrbUHykQwnc')
             ->enableProdMode(false);
-        // $algo->setHost('');
+        // $algo->setHost('https://testapi2.algorithmic.cash');
 
         $apiInstance = new DepositApi($algo);
         $address = new Address();
-        $payer = new Payer("test@gmail.com", "+1231243", $address);
-        $url = new Url("https://localhsot:8000/callback", "https://localhsot:8000/pending", "https://localhsot:8000/success", "https://localhsot:8000/error");
-        $body = new DepositRequest("100001", "100", $payer, "UPI", $url);
+        $payer = new Payer("test@gmail.com", "+918885916123", $address);
+        $url = new Url("https://localhost:8080/callback", "https://localhost:8080/pending", "https://localhost:8080/success", "https://localhost:8080/error");
+        $body = new DepositRequest("134670002", "100", $payer, $url, "UPI");
 
         try {
             $result = $apiInstance->createDeposit($body);

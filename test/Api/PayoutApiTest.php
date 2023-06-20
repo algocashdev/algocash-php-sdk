@@ -60,7 +60,7 @@ class PayoutApiTest extends TestCase
         $payer = new Payer("test@gmail.com", "+1231243", $address);
         $url = new Url("https://localhsot:8000/callback");
         $bank = new Bank("1231423", "fName lName", "sfsdf","2143");
-        $body = new PayoutRequest("100001", "100", $payer, "UPI", $bank, $url);
+        $body = new PayoutRequest("100001", "100", $payer, $bank, $url, "UPI");
 
         try {
             $result = $apiInstance->createPayout($body);
