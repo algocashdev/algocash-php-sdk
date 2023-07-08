@@ -57,6 +57,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 ?>
 ```
 ### Callback Payload
+```php
 <?php
     require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -75,6 +76,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
         http_response_code(401);
     }
 ?>
+```
 
 ## Documentation for API Endpoints
 
