@@ -59,21 +59,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 ### Callback Payload
 ```php
 <?php
-    require_once(__DIR__ . '/vendor/autoload.php');
-
     $payload = @file_get_contents('php://input');
-    $body = json_decode($payload);
     $sig_header = $_SERVER['Signature'];
 
-    $signature = hash_hmac('sha256', $payload, 'api_access_token');
-
-    if ($signature == $sig_header) {
-        ```
-        Enter your code
-        ```
+    try {
+        /**
+         * @var CallbackPayload body
+         */
+        $body = \Algocash\Callback::constructCallback($payload, $sig_header, 'accessToken');
         http_response_code(200);
-    } else {
+    } catch (\Algocash\SignatureVerificationException $e) {
         http_response_code(401);
+    }
+        catch (\Throwable $th) {
+        http_response_code(500);
     }
 ?>
 ```
