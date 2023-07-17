@@ -10,7 +10,7 @@ PHP 5.5 and later
 ## Installation & Usage
 ### Composer
 
-composer install algocash
+composer require algocashdev/algocash
 
 ### Manual Installation
 
